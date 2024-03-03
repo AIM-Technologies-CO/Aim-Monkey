@@ -111,7 +111,7 @@ function Template() {
               <AceEditor
                 mode="json"
                 theme="monokai"
-                value={JSON.stringify(data, null, 2)}
+                value={data}
                 onChange={(newData) => setData(JSON.parse(newData))}
                 name="UNIQUE_ID_OF_DIV"
                 editorProps={{ $blockScrolling: true }}
