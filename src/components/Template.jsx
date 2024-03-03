@@ -39,14 +39,14 @@ function Template() {
       .catch((error) => console.error(error));
   }, [templateName]);
 
-  useEffect(() => {
-    if (!iframeRef.current) return;
-    const iframe = iframeRef.current;
-    const doc = iframe.contentDocument;
-    doc.open();
-    doc.write(output);
-    doc.close();
-  }, [output]);
+  // useEffect(() => {
+  //   if (!iframeRef.current) return;
+  //   const iframe = iframeRef.current;
+  //   const doc = iframe.contentDocument;
+  //   doc.open();
+  //   doc.write(output);
+  //   doc.close();
+  // }, [output]);
 
   const handleSave = useCallback(() => {
     axios
@@ -135,7 +135,7 @@ function Template() {
         <div style={{ width: "50%", height: "80vh", overflowX: "hidden" }}>
           {output && (
             <iframe
-              ref={iframeRef}
+            srcDoc={output}
               style={{
                 width: "1920px",
                 height: "3000px",
