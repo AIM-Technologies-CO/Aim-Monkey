@@ -30,7 +30,7 @@ function Home() {
         </List.Item>
       ))}
       <Modal title="Request failed" open={isModalVisible} onOk={handleOk} onCancel={handleOk}>
-        <p>Make sure you have Aim-Pdf-Service running with the "report-devtool" branch</p>
+        <p>Make sure you have Aim-Pdf-Service running locally with the "report-devtool" branch</p>
       </Modal>
     </div>
   );
