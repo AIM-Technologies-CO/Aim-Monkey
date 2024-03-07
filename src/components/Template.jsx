@@ -80,6 +80,7 @@ function Template() {
           width: "100vw",
           height: "80vh",
           paddingLeft: "10px",
+          boxSizing: 'border-box',
         }}
       >
         <div style={{ width: "50%", height: "80vh" }}>
@@ -105,6 +106,8 @@ function Template() {
                 setOptions={{ showPrintMargin: false }}
                 width="50vw"
                 height="80vh"
+                style={{ boxSizing: 'border-box' }}
+
               />
             </TabPane>
             <TabPane tab="Data" key="2">
@@ -128,11 +131,13 @@ function Template() {
                 setOptions={{ showPrintMargin: false }}
                 width="50vw"
                 height="80vh"
+                style={{ boxSizing: 'border-box' }}
+
               />
             </TabPane>
           </Tabs>
         </div>
-        <div style={{ width: "50%", height: "80vh", overflowX: "hidden" }}>
+        <div style={{ width: "50%", height: "80vh", overflow: "hidden" }}>
           {output && (
             <iframe
             srcDoc={output}
@@ -142,6 +147,8 @@ function Template() {
                 transform: "scale(0.5)",
                 transformOrigin: "0 0",
                 overflowX: "hidden",
+                boxSizing: 'border-box',
+                padding: "0",
               }}
             />
           )}
