@@ -22,7 +22,6 @@ function Template() {
       .then((response) => {
         setTemplate(response.data.template);
         setData(response.data.reportData);
-        console.log(data);
         // After fetching the template, fetch the HTML
         return axios.post(
           `http://localhost:3000/dev/html?templateName=${templateName}`,
@@ -36,16 +35,9 @@ function Template() {
         setOutput(response.data);
       })
       .catch((error) => console.error(error));
-  }, [templateName]);
+  }, []);
 
-  // useEffect(() => {
-  //   if (!iframeRef.current) return;
-  //   const iframe = iframeRef.current;
-  //   const doc = iframe.contentDocument;
-  //   doc.open();
-  //   doc.write(output);
-  //   doc.close();
-  // }, [output]);
+
 
   const handleSave = useCallback(() => {
     axios
@@ -72,19 +64,10 @@ function Template() {
 
   return (
     <div>
-      <h1>Edit Template: {templateName}</h1>
-      <div
-        style={{
-          display: "flex",
-          width: "100vw",
-          height: "80vh",
-          paddingLeft: "10px",
-          boxSizing: 'border-box',
-        }}
-      >
-        <div style={{ width: "50%", height: "80vh" }}>
+      <div className="o-container">
+        <div className="editor">
           <Tabs defaultActiveKey="1">
-            <TabPane tab="Template Code" key="1">
+            <TabPane tab="Template Code" key="1" className="tabs-pane">
               <AceEditor
                 mode="liquid"
                 theme="monokai"
@@ -92,7 +75,7 @@ function Template() {
                 onChange={(newTemplate) => setTemplate(newTemplate)}
                 name="UNIQUE_ID_OF_DIV"
                 editorProps={{ $blockScrolling: true }}
-                className="h-full"
+                className="editor-full"
                 commands={[
                   {
                     name: "search",
@@ -103,10 +86,6 @@ function Template() {
                   },
                 ]}
                 setOptions={{ showPrintMargin: false }}
-                width="50vw"
-                height="80vh"
-                style={{ boxSizing: 'border-box' }}
-
               />
             </TabPane>
             <TabPane tab="Data" key="2">
@@ -117,7 +96,7 @@ function Template() {
                 onChange={(newData) => setData(JSON.parse(newData))}
                 name="UNIQUE_ID_OF_DIV"
                 editorProps={{ $blockScrolling: true }}
-                className="h-full"
+                className="editor-full"
                 commands={[
                   {
                     name: "search",
@@ -128,43 +107,15 @@ function Template() {
                   },
                 ]}
                 setOptions={{ showPrintMargin: false }}
-                width="50vw"
-                height="80vh"
-                style={{ boxSizing: 'border-box' }}
-
               />
             </TabPane>
           </Tabs>
         </div>
-        <div style={{ width: "50%", height: "80vh", overflow: "hidden" }}>
-          {output && (
-            <iframe
-            srcDoc={output}
-              style={{
-                width: "1920px",
-                height: "3000px",
-                transform: "scale(0.5)",
-                transformOrigin: "0 0",
-                overflowX: "hidden",
-                boxSizing: 'border-box',
-                padding: "0",
-              }}
-            />
-          )}
+        <div className="preview">
+          {output && <iframe srcDoc={output} className="iframe" />}
         </div>
       </div>
-      <button
-        style={{
-          position: "absolute",
-          top: "17px",
-          left: "50px",
-          padding: "10px",
-          borderRadius: "5px",
-          background: "black",
-          color: "white",
-        }}
-        onClick={handleSave}
-      >
+      <button className="save-button" onClick={handleSave}>
         Save
       </button>
     </div>
