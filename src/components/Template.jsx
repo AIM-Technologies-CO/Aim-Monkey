@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, useCallback } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import AceEditor from "react-ace";
@@ -14,7 +14,6 @@ function Template() {
   const [template, setTemplate] = useState("");
   const [data, setData] = useState({});
   const [output, setOutput] = useState("");
-  const iframeRef = useRef(null);
 
   useEffect(() => {
     console.log("fetching template");
