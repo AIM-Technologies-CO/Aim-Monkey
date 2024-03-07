@@ -8,3 +8,34 @@ li{
   margin: 0;
   padding: 0;
 }
+
+/* Home.css */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  justify-items: center;
+  align-items: center;
+}
+
+.grid-title {
+  grid-column: span 2;
+}
+
+.list-item {
+  padding: 1rem;
+  border-bottom: 1px solid #ccc;
+  background-color: #007bff;
+  margin-bottom: 1rem;
+  width: 400px;
+}
+
+.link {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.link:hover {
+  color: #00f;
+}

@@ -23,16 +23,16 @@ function Home() {
   };
 
   return (
-    <div className="grid grid-cols-2 gap-4 justify-items-center items-center">
-      <h1 className="col-span-2">Available Templates</h1>
+    <div className="grid-container">
+      <h1 className="grid-title">Available Templates</h1>
       {templates.map((template) => (
         <List.Item
           key={template}
-          className="p-4 border-b border-gray-200 bg-blue-500 mb-4 w-[400px]"
+          className="list-item"
         >
           <Link
             to={`/template/${template}`}
-            className="text-white hover:text-blue-700 font-bold"
+            className="link"
           >
             {template}
           </Link>
