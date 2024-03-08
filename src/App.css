@@ -43,10 +43,8 @@ li {
 /* Template.css */
 .o-container {
   display: flex;
-  justify-content: stretch;
   width: 100vw;
   height: 80vh;
-  padding-left: 10px;
   box-sizing: border-box;
 }
 
@@ -54,8 +52,9 @@ li {
   flex: 1;
   height: 80vh;
 }
-
-
+.ant-tabs-nav-wrap{
+  padding-left: 10px;
+}
 .editor-full {
   width: 100% !important;
   height: 80vh !important;
@@ -69,11 +68,10 @@ li {
 }
 
 .iframe {
-  width: 1920px;
+  width: 1900px;
   height: 3000px;
-  transform: scale(0.45);
   transform-origin: 0 0;
-  overflow-x: hidden;
+  overflow-x: auto;
   box-sizing: border-box;
   padding: 0;
 }

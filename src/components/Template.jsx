@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback,useRef } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import AceEditor from "react-ace";
@@ -14,6 +14,8 @@ function Template() {
   const [template, setTemplate] = useState("");
   const [data, setData] = useState({});
   const [output, setOutput] = useState("");
+  const iframeRef = useRef(null);
+
 
   useEffect(() => {
     console.log("fetching template");
@@ -35,6 +37,21 @@ function Template() {
         setOutput(response.data);
       })
       .catch((error) => console.error(error));
+  }, []);
+  useEffect(() => {
+    const scaleElement = () => {
+      const scaleFactor = (window.innerWidth*.5 / 1920 );
+      if (iframeRef.current) {
+        iframeRef.current.style.transform = `scale(${scaleFactor})`;
+      }
+    };
+
+    window.addEventListener('resize', scaleElement);
+    scaleElement(); // Call the function initially
+
+    return () => {
+      window.removeEventListener('resize', scaleElement);
+    };
   }, []);
 
 
@@ -66,7 +83,7 @@ function Template() {
     <div>
       <div className="o-container">
         <div className="editor">
-          <Tabs defaultActiveKey="1">
+          <Tabs defaultActiveKey="1" className="tabs">
             <TabPane tab="Template Code" key="1" className="tabs-pane">
               <AceEditor
                 mode="liquid"
@@ -112,7 +129,7 @@ function Template() {
           </Tabs>
         </div>
         <div className="preview">
-          {output && <iframe srcDoc={output} className="iframe" />}
+          {output && <iframe srcDoc={output} ref={iframeRef} className="iframe" />}
         </div>
       </div>
       <button className="save-button" onClick={handleSave}>
