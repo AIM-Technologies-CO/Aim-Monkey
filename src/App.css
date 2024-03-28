@@ -44,7 +44,7 @@ li {
 .o-container {
   display: flex;
   width: 100vw;
-  height: 80vh;
+  height: 100%;
   box-sizing: border-box;
 }
 
@@ -63,17 +63,23 @@ li {
 
 .preview {
   flex: 1;
-  height: 80vh;
-  overflow: hidden;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+.tabs{
+  height: calc(100vh - 72px);
 }
 
 .iframe {
   width: 1900px;
-  height: 3000px;
+  height: 2100px;
   transform-origin: 0 0;
   overflow-x: auto;
   box-sizing: border-box;
   padding: 0;
+  overflow-x: hidden;
+
 }
 
 .save-button {
