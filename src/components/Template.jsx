@@ -120,7 +120,7 @@ function Template() {
                 theme="monokai"
                 value={template}
                 onChange={(newTemplate) => setTemplate(newTemplate)}
-                name="UNIQUE_ID_OF_DIV"
+                name="code"
                 editorProps={{ $blockScrolling: true }}
                 className="editor-full"
                 commands={[
@@ -140,8 +140,8 @@ function Template() {
                 mode="json"
                 theme="monokai"
                 value={data}
-                onChange={(newData) => setData(JSON.parse(newData))}
-                name="UNIQUE_ID_OF_DIV"
+                onChange={(newData) => setData(newData)}
+                name="data"
                 editorProps={{ $blockScrolling: true }}
                 className="editor-full"
                 commands={[
